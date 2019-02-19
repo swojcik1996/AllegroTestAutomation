@@ -1,3 +1,7 @@
+/**
+ * @author  Sławomir Wójcik
+ * @version 1.0
+ */
 package pages.menu;
 
 import org.openqa.selenium.WebDriver;

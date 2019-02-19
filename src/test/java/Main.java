@@ -4,16 +4,12 @@
  */
 import models.BaseTest;
 import models.Order;
-import models.Product;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.ProductListPage;
 import pages.ProductPage;
 import pages.menu.MenuPage;
 import pages.RegulationsPage;
-
-import java.math.BigDecimal;
 
 public class Main extends BaseTest {
     private Order order;

@@ -24,7 +24,7 @@ public class MenuPage extends BasePage {
 
     public MenuPage chooseRandomCategory(){
 
-        int randomCategory = 4;
+        int randomCategory = random.nextInt(1);
         menuList.get(randomCategory).click();
 
         switch (randomCategory){

@@ -1,3 +1,7 @@
+/**
+ * @author  Sławomir Wójcik
+ * @version 1.0
+ */
 package pages;
 
 import org.openqa.selenium.WebDriver;
@@ -18,7 +22,7 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//button[@id='add-to-cart-button']")
     private WebElement addTobasket;
 
-    @FindBy(id = "add-to-cart-si-precart")
+    @FindBy(xpath = "//div[@id='modal-footer_I9K2diEIAl']")
     private WebElement dialogGoToBasket;
 
     public ProductPage(WebDriver driver) {

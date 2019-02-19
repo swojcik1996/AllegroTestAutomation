@@ -4,6 +4,7 @@
  */
 import models.BaseTest;
 import org.junit.jupiter.api.Test;
+import pages.ProductListPage;
 import pages.menu.MenuPage;
 import pages.RegulationsPage;
 
@@ -13,5 +14,7 @@ public class Main extends BaseTest {
     public void checkoutTest(){
         new RegulationsPage(driver).accept();
         new MenuPage(driver).chooseRandomCategory();
+
+        new ProductListPage(driver).randProductPage().randProduct();
     }
 }

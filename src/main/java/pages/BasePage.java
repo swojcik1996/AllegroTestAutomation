@@ -34,7 +34,7 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
-    protected void moveToElement(WebElement element) {
-        actions.moveToElement(element).perform();
+    protected void moveToElementAndClick(WebElement element) {
+        actions.moveToElement(element).click().perform();
     }
 }

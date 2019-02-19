@@ -1,3 +1,7 @@
+/**
+ * @author  Sławomir Wójcik
+ * @version 1.0
+ */
 package pages.menu;
 
 import org.openqa.selenium.WebDriver;
@@ -20,7 +24,7 @@ public class MenuPage extends BasePage {
 
     public MenuPage chooseRandomCategory(){
 
-        int randomCategory = 1;
+        int randomCategory = 0;
         menuList.get(randomCategory).click();
 
         switch (randomCategory){
@@ -32,6 +36,36 @@ public class MenuPage extends BasePage {
                 break;
             case 2:
                 new HouseAndGardenSubPage(driver).randomSubcategory();
+                break;
+            case 3:
+                System.out.println("Supermarket");
+                break;
+            case 4:
+                System.out.println("Dziecko");
+                break;
+            case 5:
+                System.out.println("Uroda");
+                break;
+            case 6:
+                System.out.println("Zdrowie");
+                break;
+            case 7:
+                System.out.println("Kultura i Rozrywka");
+                break;
+            case 8:
+                System.out.println("Sport i turystyka");
+                break;
+            case 9:
+                System.out.println("Motoryzacja");
+                break;
+            case 10:
+                System.out.println("Ogłoszenia i usługi");
+                break;
+            case 11:
+                System.out.println("Kolekcje i sztuka");
+                break;
+            case 12:
+                System.out.println("Firma");
                 break;
             default:
                 System.out.println("Incorrect category!");

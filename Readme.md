@@ -1,0 +1,5 @@
+# AllegroTestAutomation
+
+## Authors
+
+* **Sławomir Wójcik** 

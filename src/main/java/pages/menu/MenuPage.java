@@ -20,7 +20,7 @@ public class MenuPage extends BasePage {
 
     public MenuPage chooseRandomCategory(){
 
-        int randomCategory = 0;
+        int randomCategory = 1;
         menuList.get(randomCategory).click();
 
         switch (randomCategory){
@@ -28,10 +28,10 @@ public class MenuPage extends BasePage {
                 new ElectronicSubPage(driver).randomSubcategory();
                 break;
             case 1:
-                System.out.println("moda");
+                new FashionSubPage(driver).randomSubcategory();
                 break;
             case 2:
-                System.out.println("dom i ogród");
+                new HouseAndGardenSubPage(driver).randomSubcategory();
                 break;
             default:
                 System.out.println("Incorrect category!");

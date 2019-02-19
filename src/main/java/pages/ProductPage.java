@@ -34,7 +34,6 @@ public class ProductPage extends BasePage {
         System.out.println(name.getText());
         System.out.println(price.getText());
         System.out.println(quantity.getAttribute("value"));
-
         addTobasket.click();
         return this;
     }

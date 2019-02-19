@@ -39,6 +39,6 @@ public class Main extends BaseTest {
         productListPage.randProductPage().randProduct();
         productPage.addToBasket();
 
-        Product product = new Product("test",new BigDecimal(22), 2,new BigDecimal(44));
+       // Product product = new Product("test",new BigDecimal(22), 2,new BigDecimal(44));
     }
 }

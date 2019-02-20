@@ -12,7 +12,7 @@ public class Product {
     private int quantity;
     private BigDecimal totalPrice;
 
-    public Product(String name, BigDecimal price, int quantity, BigDecimal totalPrice) {
+    public Product(String name, BigDecimal price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;

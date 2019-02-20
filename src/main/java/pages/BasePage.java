@@ -4,13 +4,12 @@
  */
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 public abstract class BasePage {
@@ -26,15 +25,15 @@ public abstract class BasePage {
         this.random = new Random();
     }
 
-    protected void waitForVisibilityElements(By by) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-    }
-
-    protected void waitForClickableElements(By by) {
-        wait.until(ExpectedConditions.elementToBeClickable(by));
+    protected void moveToElement(WebElement element) {
+        actions.moveToElement(element).perform();
     }
 
     protected void moveToElementAndClick(WebElement element) {
         actions.moveToElement(element).click().perform();
+    }
+
+    protected BigDecimal getDecimal(WebElement element){
+        return new BigDecimal( element.getText().replace("zł","").replace(",",".").replace(" ","").trim());
     }
 }

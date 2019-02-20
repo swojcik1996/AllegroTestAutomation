@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 
 public class ProductListPage extends BasePage {
@@ -29,19 +28,20 @@ public class ProductListPage extends BasePage {
     }
 
     public ProductListPage randProductPage(){
-        int randomPage = random.nextInt(Integer.parseInt(countPage.getText()));
         fieldCountPage.clear();
-        fieldCountPage.sendKeys(Integer.toString(randomPage)+ Keys.ENTER);
+        fieldCountPage.sendKeys(Integer.toString(random.nextInt(Integer.parseInt(countPage.getText())))+ Keys.ENTER);
+        //wait.until(driver -> ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete"));
         return this;
     }
 
     public ProductListPage randProduct(){
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        moveToElementAndClick(productsList.get(random.nextInt(60)));
+
+        moveToElementAndClick(productsList.get(random.nextInt(productsList.size())));
         return this;
     }
 }

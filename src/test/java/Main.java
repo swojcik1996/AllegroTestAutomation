@@ -6,10 +6,8 @@ import models.BaseTest;
 import models.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pages.ProductListPage;
-import pages.ProductPage;
-import pages.menu.MenuPage;
-import pages.RegulationsPage;
+import pages.*;
+import utilities.Configuration;
 
 public class Main extends BaseTest {
     private Order order;
@@ -17,6 +15,8 @@ public class Main extends BaseTest {
     private MenuPage menuPage;
     private ProductListPage productListPage;
     private ProductPage productPage;
+    private Configuration configuration;
+    private BasketPage basketPage;
 
     @BeforeEach
     public void checkoutSetup(){
@@ -24,17 +24,23 @@ public class Main extends BaseTest {
         regulationsPage = new RegulationsPage(driver);
         menuPage = new MenuPage(driver);
         productListPage = new ProductListPage(driver);
-        productPage = new ProductPage(driver);
+        productPage = new ProductPage(driver, order);
+        configuration = new Configuration();
+        basketPage = new BasketPage(driver);
     }
 
     @Test
     public void checkoutTest(){
         regulationsPage.accept();
 
-        menuPage.chooseRandomCategory();
-        productListPage.randProductPage().randProduct();
-        productPage.addToBasket();
-
-       // Product product = new Product("test",new BigDecimal(22), 2,new BigDecimal(44));
+        for(int i=0; i < Integer.parseInt(configuration.loadConfigurationFromPropertiesFile("countProduct")); i++){
+            menuPage.randomCategory();
+            productListPage.randProductPage();
+            productListPage.randProduct();
+            productPage.continueShopping();
+        }
+        
+        basketPage.goToBasket();
+        basketPage.validateBasket();
     }
 }

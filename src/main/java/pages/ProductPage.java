@@ -4,10 +4,14 @@
  */
 package pages;
 
+import models.Order;
+import models.Product;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import utilities.Configuration;
 
 public class ProductPage extends BasePage {
     @FindBy(xpath = "//h1[@class='fb442b3f']")
@@ -22,19 +26,23 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//button[@id='add-to-cart-button']")
     private WebElement addTobasket;
 
-    @FindBy(xpath = "//div[@id='modal-footer_I9K2diEIAl']")
-    private WebElement dialogGoToBasket;
+    @FindBy(xpath = "//button[@class='btn btn-link']")
+    private WebElement continueShoppingNewProducts;
 
-    public ProductPage(WebDriver driver) {
+    private Order order;
+
+    public ProductPage(WebDriver driver, Order order) {
         super(driver);
         PageFactory.initElements(driver,this);
+        this.order = order;
     }
 
-    public ProductPage addToBasket(){
-        System.out.println(name.getText());
-        System.out.println(price.getText());
-        System.out.println(quantity.getAttribute("value"));
+    public ProductPage continueShopping(){
+        order.addProduct(new Product(name.getText(),getDecimal(price),Integer.parseInt(quantity.getAttribute("value"))));
         addTobasket.click();
+        wait.until(ExpectedConditions.elementToBeClickable(continueShoppingNewProducts));
+        continueShoppingNewProducts.click();
+        driver.get(new Configuration().loadConfigurationFromPropertiesFile("baseUrl"));
         return this;
     }
 }
